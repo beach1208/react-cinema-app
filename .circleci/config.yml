@@ -112,7 +112,6 @@ workflows:
       - deploy-to-cloudfront:
           requires:
             - deploy-to-aws-s3
-          context: AWS_ACCESS_KEY
           filters:
             branches:
               only:
