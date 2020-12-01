@@ -30,6 +30,23 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
+      - slack/notify:
+          custom: |
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "plain_text",
+                      "text": "*This is a text notification*",
+                      "emoji": true
+                    }
+                  ]
+                }
+              ]
+            }
+          event: always
       - run:
           name: Show current branch
           command: echo ${CIRCLE_BRANCH}
